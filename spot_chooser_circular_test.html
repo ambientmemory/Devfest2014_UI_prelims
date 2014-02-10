@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title>This globe does cool things.js app</title>
+		<style>canvas { width: 100%; height: 100% }</style>
+	</head>
+	<body>
+		<script src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
+		<script>
+            var camera, scene, clicks, renderer;
+            /**var myColors = new Array();
+                myColors[0] = 0xcec8ef;
+                myColors[1] = 0xc9a0dc;
+                myColors[2] = 0xfbaed2;
+                myColors[3] = 0xdda0dd;
+                myColors[4] = 0xb57edc;
+                **/
+			//var myBlobs = new Array();
+              var myBlobs0 = new THREE.SphereGeometry(500, 5, 5, 0, Math.PI*2, 0, Math.PI*2);
+              var myBlobs1 = new THREE.SphereGeometry(100, 5, 5, 0, Math.PI*2, 0, Math.PI*2);
+              var myBlobs2 = new THREE.SphereGeometry(200, 5, 5, 0, Math.PI*2, 0, Math.PI*2);
+              var myBlobs3 = new THREE.SphereGeometry(100, 5, 5, 0, Math.PI*2, 0, Math.PI*2);
+              var myBlobs4 = new THREE.SphereGeometry(500, 5, 5, 0, Math.PI*2, 0, Math.PI*2);
+            //var myMaterials = new Array();
+              var  myMaterials0 = new THREE.MeshBasicMaterial({color:0xcec8ef, wireframe: true, wireframeLinewidth: 2});
+              var  myMaterials1 = new THREE.MeshBasicMaterial({color:0xc9a0dc, wireframe: true, wireframeLinewidth: 2});
+              var myMaterials2 = new THREE.MeshBasicMaterial({color:0xfbaed2, wireframe: true, wireframeLinewidth: 2});
+              var myMaterials3 = new THREE.MeshBasicMaterial({color:0xdda0dd, wireframe: true, wireframeLinewidth: 2});
+              var myMaterials4 = new THREE.MeshBasicMaterial({color:0xb57edc, wireframe: true, wireframeLinewidth: 2});
+            //var myMeshes = new Array();
+            var    myMeshes0 = new THREE.Mesh(myBlobs0, myMaterials0);
+                myMeshes0.position.set(0,0,0);
+            var    myMeshes1 = new THREE.Mesh(myBlobs1, myMaterials1);
+                myMeshes1.position.set(-80,-80,-80);
+            var    myMeshes2 = new THREE.Mesh(myBlobs2, myMaterials2);
+                myMeshes2.position.set(700,700,700);
+            var    myMeshes3 = new THREE.Mesh(myBlobs3, myMaterials3);
+                myMeshes3.position.set(-300,-300,-300);
+            var    myMeshes4 = new THREE.Mesh(myBlobs4, myMaterials4);
+                myMeshes4.position.set(300,300,300);
+            //var no_of_things = 5;
+            
+            
+            /**for( var i=0; i <no_of_things; i++){
+                var radius = Math.round((Math.random())*100);
+                var width_seg = Math.round((Math.random()*10));
+                var height_seg = Math.round((Math.random()*10));
+                myBlobs[i] = new THREE.SphereGeometry(radius, width_seg, height_seg, 0, Math.PI*2, 0, Math.PI*2);
+                myMaterials[i] = new THREE.MeshBasicMaterial({color:myColors[i], wireframe: true, wireframeLinewidth: 2});
+                myMeshes[i] = new THREE.Mesh(myBlobs[i], myMaterials[i]);
+                MyMeshes[i].position.set(i*100, i*100, i*100);
+            }**/
+            
+            var init = function (){
+                renderer = new THREE.CanvasRenderer();
+			    renderer.setSize(window.innerWidth, window.innerHeight);
+			    document.body.appendChild(renderer.domElement);
+                
+                camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 1, 100000);
+                camera.position.z = 1000;
+                scene = new THREE.Scene();
+                //for( var i=0; i < no_of_things; i++){
+                //  scene.add(myMeshes[i]);
+                //}
+                scene.add(myMeshes0);
+              //  scene.add(myMeshes1);
+            //    scene.add(myMeshes2);
+              //  scene.add(myMeshes3);
+            //    scene.add(myMeshes4);
+                
+            }
+
+			var animate = function () {
+                requestAnimationFrame(animate);
+                mesh.rotation.x = Date.now() * 0.005;
+			    mesh.rotation.y = Date.now() * 0.001;
+                renderer.render(scene, camera);
+            }
+
+			init();
+			animate();
+            
+		</script>
+	</body>
+</html>
+            

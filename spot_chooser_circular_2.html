@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title>This globe does cool things.js app</title>
+		<style>canvas { width: 100%; height: 100% }</style>
+	</head>
+	<body>
+		<script src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
+		<script>
+            var camera, scene, clicks, renderer;
+			var myBlobs = new Array();
+            var myMaterials = new Array();
+            var myMeshes = new Array();
+            var no_of_things = 5;
+            var total_geometry;
+            
+            for( var i=0; i <no_of_things; i++){
+                var radius = Math.round((Math.random())*100);
+                var width_seg = Math.round((Math.random()*10));
+                var height_seg = Math.round((Math.random()*10));
+                alert("Current Radius = "+radius);
+                // var color = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+                myBlobs[i] = new THREE.SphereGeometry(radius, width_seg, height_seg, 0, Math.PI*2, 0, Math.PI*2);
+                myMaterials[i] = new THREE.MeshBasicMaterial( {color: '#551a8b', wireframe: true, wireframeLinewidth: 2});
+                myMeshes[i] = new THREE.Mesh(myBlobs[i], myMaterials[i]);
+            }
+            
+            //window.addEventListener("click", onClick, false);
+            //clicks = 0;
+
+			/**function onClick() {
+                clicks = clicks+1;
+                if( clicks%2 == 0) {
+                 camera.position.z = 1000;    
+                 animate();
+                }
+                else{
+                    camera.position.z = 100;
+                    animate();
+                }       
+        	}**/
+            
+            var init = function () {
+                renderer = new THREE.CanvasRenderer();
+			    renderer.setSize(window.innerWidth, window.innerHeight);
+			    document.body.appendChild(renderer.domElement);
+                
+                camera = new THREE.PerspectiveCamera(100, window.innerWidth/window.innerHeight, 1, 100000);
+                camera.position.z = 1000;
+                scene = new THREE.Scene();
+                total_geometry = THREE.GeometryUtils.merge(myBlobs[0], myBlobs[1], myBlobs[2], myBlobs[3], myBlobs[4]); 
+                var temp_material = new THREE.MeshBasicMaterial({color:'#551a8b', wireframe: true, wireframeLinewidth: 2});
+                
+                var my_mesh = new THREE.Mesh(total_geometry, temp_material);
+                scene.add(my_mesh);
+                /**for( var i = 0; i < no_of_things; i++){
+                    scene.add(myMeshes[i]);
+                }**/
+            }
+
+			var animate = function () {
+                requestAnimationFrame(animate);
+                mesh.rotation.x = Date.now() * 0.005;
+			    mesh.rotation.y = Date.now() * 0.001;
+                renderer.render(scene, camera);
+            }
+
+			init();
+			animate();
+            
+		</script>
+	</body>
+</html>
+            
