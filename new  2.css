@@ -1,0 +1,26 @@
+<div class="eight columns">
+    <h2>Eight Columns</h2>
+    <p>Lorem ipsum... </p>
+         
+    <div class="row">
+        <div class="three columns">
+            <img src="http://placehold.it/300x100&text=img" alt="">
+        </div>
+        <div class="three columns">
+            <img src="http://placehold.it/300x100&text=img" alt="">
+        </div>
+        <div class="three columns">
+            <img src="http://placehold.it/300x100&text=img" alt="">
+        </div>
+ 
+        <div class="three columns">
+            <img src="http://placehold.it/300x100&text=img" alt="">
+        </div>
+    </div>
+  </div>
+ 
+  <div class="four columns">
+    <h2>Four Columns</h2>
+    <p>Lorem ipsum...</p>
+  </div>
+</div>
